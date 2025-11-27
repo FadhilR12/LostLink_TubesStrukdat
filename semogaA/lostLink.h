@@ -27,7 +27,7 @@ void preorder(adrNode root);
 void inorder(adrNode root);
 void postorder(adrNode root);
 void bfs(adrNode root);
-void showByCategory(adrNode root);
+void showByCategory(adrNode root, int minID, int maxID);
 adrNode searchID(adrNode root, int id);
 adrNode searchByName(adrNode root, string name);
 void updateNode(adrNode &root, int id);
