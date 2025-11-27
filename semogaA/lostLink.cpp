@@ -70,7 +70,11 @@ void postorder(adrNode root)
     {
         postorder(root->left);
         postorder(root->right);
-        cout << "ID: " << root->info.id << "|" << ", Item: " << root->info.nama << "|" << ", Kategori: " << root->info.kategori << "|" << ", Lokasi: " << root->info.lokasi << "|" << endl;
+        cout << "ID: " << root->info.id << "|" 
+            << ", Item: " << root->info.nama << "|" 
+            << ", Kategori: " << root->info.kategori << "|" 
+            << ", Lokasi: " << root->info.lokasi << "|" 
+            << endl;
     }
 }
 void bfs(adrNode root)
@@ -86,7 +90,11 @@ void bfs(adrNode root)
         adrNode current = q.front();
         q.pop();
 
-        cout << "ID: " << current->info.id << "|" << ", Item: " << current->info.nama << "|" << ", Kategori: " << current->info.kategori << "|" << ", Lokasi: " << current->info.lokasi << "|" << endl;
+        cout << "ID: " << current->info.id << "|" 
+            << ", Item: " << current->info.nama << "|" 
+            << ", Kategori: " << current->info.kategori << "|" 
+            << ", Lokasi: " << current->info.lokasi << "|" 
+            << endl;
 
         if (current->left != nullptr)
         {
