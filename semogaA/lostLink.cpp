@@ -1,14 +1,17 @@
 #include <iostream>
 #include "lostLink.h"
+#include <queue>
 
 using namespace std;
 
-void createTree (adrNode &root){
+void createTree(adrNode &root)
+{
     root = nullptr;
 }
 
-adrNode createNode (infotype x){
-    adrNode p =new Node;
+adrNode createNode(infotype x)
+{
+    adrNode p = new Node;
     p->info = x;
     p->left = nullptr;
     p->right = nullptr;
@@ -16,25 +19,128 @@ adrNode createNode (infotype x){
     return p;
 }
 
-void insertNode (adrNode &root, adrNode p){
-    if (root == nullptr){
+void insertNode(adrNode &root, adrNode p)
+{
+    if (root == nullptr)
+    {
         root = p;
-    } else {
-        if (p->info.id < root->info.id){
+    }
+    else
+    {
+        if (p->info.id < root->info.id)
+        {
             insertNode(root->left, p);
-        } else {
+        }
+        else
+        {
             insertNode(root->right, p);
         }
     }
 }
 
-void preorder(adrNode root);
-void inorder(adrNode root);
-void postorder(adrNode root);
-void bfs(adrNode root);
-void showByCategory(adrNode root);
-adrNode searchID(adrNode root, int id);
-adrNode searchByName(adrNode root, string name);
-void updateNode(adrNode &root, int id);
-void deleteNode(adrNode &root, int id);
+void preorder(adrNode root){
+    if (root != nullptr)
+    {
+        cout << "ID: " << root->info.id << "|" << ", Nama: " << root->info.nama << "|" << ", Kategori: " << root->info.kategori << "|" << ", Lokasi: " << root->info.lokasi << "|" << endl;
+        preorder(root->left);
+        preorder(root->right);
+    }
+    
+}
+void inorder(adrNode root)
+{
+    if (root != nullptr)
+    {
+        inorder(root->left);
+        cout << "ID: " << root->info.id << "|" << ", Nama: " << root->info.nama << "|" << ", Kategori: " << root->info.kategori << "|" << ", Lokasi: " << root->info.lokasi << "|" << endl;
+        inorder(root->right);
+    }
+}
+void postorder(adrNode root){
+    if (root != nullptr)
+    {
+        postorder(root->left);
+        postorder(root->right);
+        cout << "ID: " << root->info.id << "|" << ", Nama: " << root->info.nama << "|" << ", Kategori: " << root->info.kategori << "|" << ", Lokasi: " << root->info.lokasi << "|" << endl;
+    }
+}
+void bfs(adrNode root){
+    if (root == nullptr) return;
 
+    queue<adrNode> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        adrNode current = q.front();
+        q.pop();
+
+        cout << "ID: " << current->info.id << "|" << ", Nama: " << current->info.nama << "|" << ", Kategori: " << current->info.kategori << "|" << ", Lokasi: " << current->info.lokasi << "|" << endl;
+
+        if (current->left != nullptr) {
+            q.push(current->left);
+        }
+        if (current->right != nullptr) {
+            q.push(current->right);
+        }
+    }
+}
+void showByCategory(adrNode root);
+adrNode searchID(adrNode root, int id){
+    if (root == nullptr){
+        return nullptr;
+    } else if (root->info.id == id){
+        return root;
+    } else if (id < root->info.id){
+        return searchID(root->left, id);
+    } else {
+        return searchID(root->right, id);
+    }
+}
+adrNode searchByName(adrNode root, string name) {
+    if (root == nullptr) {
+        return nullptr;
+    }
+    if (root->info.nama == name) {
+        return root;
+    }
+    adrNode leftResult = searchByName(root->left, name);
+    if (leftResult != nullptr) {
+        return leftResult;
+    }
+
+    // Cari di subtree kanan
+    return searchByName(root->right, name);
+}
+void updateNode(adrNode &root, int id);
+adrNode minValueNode(adrNode root){
+    while (root->left != nullptr)
+        root = root->left;
+    return root;
+}
+void deleteNode(adrNode &root, int id){
+    if (root == nullptr){
+        return;
+    } 
+    if (id < root->info.id){
+        deleteNode(root->left, id);
+    } else if (id > root->info.id){
+        deleteNode(root->right, id);
+    } else {
+        if (root->left == nullptr && root->right == nullptr){
+            delete root;
+            root = nullptr;
+        } else if (root->left == nullptr){
+            adrNode temp = root;
+            root = root->right;
+            delete temp;
+        } else if (root->right == nullptr){
+            adrNode temp = root;
+            root = root->left;
+            delete temp;
+        } else {
+            adrNode temp = minValueNode(root->right);
+            root->info = temp->info;
+            deleteNode(root->right, temp->info.id);
+        }
+    }
+}

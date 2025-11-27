@@ -32,5 +32,6 @@ adrNode searchID(adrNode root, int id);
 adrNode searchByName(adrNode root, string name);
 void updateNode(adrNode &root, int id);
 void deleteNode(adrNode &root, int id);
+adrNode minValueNode(adrNode root);
 
 #endif // LOSTLINK_H_INCLUDED
