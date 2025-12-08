@@ -14,65 +14,9 @@ void main_menu(){
     cout << "Select an option (1-7): ";
 }
 
-void menuTambahBarang(){
-    cout << "=== Add New Item ===" << endl;
-    
-}
-
-void menuLihatBarang(){
-    cout << "===   List Item  ===" << endl;
-    inorder(root);
-}
-
-void menuCariBarang(){
-    cout << "=== Search Item ===" << endl;
-    while (true){
-        cout << "1. Search by ID" << endl;
-        cout << "2. Search by Name" << endl;
-        cout << "3. Back to Main Menu" << endl;
-        cout << "Select an option (1-3): ";
-        int choice;
-        cin >> choice;
-        if (choice == 1){
-            menuCariID();
-        } else if (choice == 2){
-            menuCariNama();
-        } else if (choice == 3){
-            break;
-        } else {
-            cout << "Invalid option. Please try again." << endl;
-        }
-    }
-}
-
-void menuCariID(){
-    cout << "=== Search Item by ID ===" << endl;
-
-}
-
-void menuCariNama(){
-    cout << "=== Search Item by Name ===" << endl;
-
-}
-
-void menuUpdateBarang(){
-    cout << "=== Update Item ===" << endl;
-
-}
-
-void menuHapusBarang(){
-    cout << "=== Delete Item ===" << endl;
-
-}
-
-void menuKategori(){
-    cout << "=== View Items by Category ===" << endl;
-
-}
-
 int main()
 {
-    int input = 0, id, minID, maxID;
+    int input = 0;
     adrNode root = nullptr;
     infotype x;
     string name;

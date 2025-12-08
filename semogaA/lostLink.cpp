@@ -8,7 +8,13 @@ void createTree(adrNode &root)
 {
     root = nullptr;
 }
+ // 001
 
+ // 1 - 100 -> elektronik
+
+ // show by category pake inorder dengan header nya terpisah dari loop
+
+ // buat 5 inorder untuk setiap kategori
 adrNode createNode(infotype x)
 {
     adrNode p = new Node;
@@ -37,7 +43,7 @@ void insertNode(adrNode &root, adrNode p)
         }
     }
 }
-
+// preorder, postorde pindahkan file atau hapus 
 void preorder(adrNode root)
 {
     if (root != nullptr)
@@ -143,6 +149,7 @@ adrNode searchID(adrNode root, int id)
         return searchID(root->right, id);
     }
 }
+//bfs buat search by name
 adrNode searchByName(adrNode root, string name)
 {
     if (root == nullptr)
