@@ -44,10 +44,10 @@ void inorder(adrNode root)
     if (root != nullptr)
     {
         inorder(root->left);
-        cout << "ID: " << root->info.id << "|" 
-            << ", Item: " << root->info.nama << "|" 
-            << ", Kategori: " << root->info.kategori << "|" 
-            << ", Lokasi: " << root->info.lokasi << "|" 
+        cout << "ID: " << root->info.id << "|"
+            << ", Item: " << root->info.nama << "|"
+            << ", Kategori: " << root->info.kategori << "|"
+            << ", Lokasi: " << root->info.lokasi << "|"
             << endl;
         inorder(root->right);
     }
@@ -66,10 +66,10 @@ void bfs(adrNode root)
         adrNode current = q.front();
         q.pop();
 
-        cout << "ID: " << current->info.id << "|" 
-            << ", Item: " << current->info.nama << "|" 
-            << ", Kategori: " << current->info.kategori << "|" 
-            << ", Lokasi: " << current->info.lokasi << "|" 
+        cout << "ID: " << current->info.id << "|"
+            << ", Item: " << current->info.nama << "|"
+            << ", Kategori: " << current->info.kategori << "|"
+            << ", Lokasi: " << current->info.lokasi << "|"
             << endl;
 
         if (current->left != nullptr)
