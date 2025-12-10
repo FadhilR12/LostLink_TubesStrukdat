@@ -14,7 +14,7 @@ void main_menu(){
     cout << "3. Cari Item" << endl;
     cout << "4. Update Item" << endl;
     cout << "5. Hapus Item" << endl;
-    cout << "6. Lihat Items Berdasarkan Kategori" << endl;
+    cout << "6. Lihat Item Berdasarkan Kategori" << endl;
     cout << "7. Keluar" << endl;
     cout << "Select an option (1-7): ";
 }
@@ -28,13 +28,13 @@ infotype menuTambahItem(){
     cin >> x.nama;
     cout << "Masukkan Lokasi Item: ";
     cin >> x.lokasi;
-    if (id <= 100) {
+    if (x.id <= 100) {
         x.kategori = 1; // Elektronik
-    } else if (id <= 200) {
+    } else if (x.id <= 200) {
         x.kategori = 2; // Pakaian
-    } else if (id <= 300) {
+    } else if (x.id <= 300) {
         x.kategori = 3; // Makanan
-    } else if (id <= 400) {
+    } else if (x.id <= 400) {
         x.kategori = 4; // Buku
     } else {
         x.kategori = 5; // Lainnya
@@ -85,7 +85,7 @@ int main()
                     cout << "Select an option (1-3): ";
                     cin >> input;
                     if (input == 1){
-                        cout << "Masukkan ID yang ingin dicari: ";
+                        cout << "Masukkan ID item yang ingin dicari: ";
                         cin >> id;
                         adrNode result = id(root, id);
                         if (result != nullptr){
@@ -101,7 +101,7 @@ int main()
                         }
                     }
                     else if (input == 2){
-                        cout << "Masukkan Nama yang ingin dicari: ";
+                        cout << "Masukkan nama item yang ingin dicari: ";
                         cin >> nama;
                         adrNode result = searchByName(root, nama);
                         if (result != nullptr){
@@ -113,16 +113,21 @@ int main()
                                  << endl;
                             cout << "==================================" << endl;
                         } else {
-                            cout << "Item dengan Nama " << nama << " tidak ditemukan." << endl;
+                            cout << "Item dengan nama " << nama << " tidak ditemukan." << endl;
                         }
                     }
                 }
                 break;
              case 4:
-                // Code to update item
+                cout << "Masukkan ID item yang ingin diupdate: ";
+                cin >> id;
+                updateNode(root, id);
                 break;
              case 5:
-                // Code to delete item
+                cout << "Masukkan ID item yang ingin dihapus: ";
+                cin >> id;
+                deleteNode(root, id);
+                cout << "Item dengan ID " << id << " telah dihapus." << endl
                 break;
             case 6:
                 // Code to view items by category
