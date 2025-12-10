@@ -23,9 +23,7 @@ struct Node{
 void createTree (adrNode &root);
 adrNode createNode (infotype x);
 void insertNode (adrNode &root, adrNode p);
-void preorder(adrNode root);
 void inorder(adrNode root);
-void postorder(adrNode root);
 void bfs(adrNode root);
 void showByCategory(adrNode root, int minID, int maxID);
 adrNode searchID(adrNode root, int id);
