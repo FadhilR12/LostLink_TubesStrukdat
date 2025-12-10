@@ -43,6 +43,13 @@ infotype menuTambahItem(){
     return x;
 }
 
+void menuCariItem(){
+    cout << "=========== Cari Item ===========" << endl;
+    cout << "1. Cari berdasarkan ID" << endl;
+    cout << "2. Cari berdasarkan Nama" << endl;
+    cout << "3. Kembali ke menu utama" << endl;
+    cout << "Select an option (1-3): ";
+}
 
 int main()
 {
@@ -61,17 +68,61 @@ int main()
                 cout << endl;
                 break;
             case 2:
+                while (input != 1){
                 cout << "=========== Semua Item ===========" << endl;
                 inorder(root);
+                cout << "==================================" << endl;
+                cout << "1. Kembali ke menu utama" << endl;
+                cin >> input;
+                }
                 break;
             case 3:
-                // Code to search item by ID
+                while (input != 3){
+                    cout << "=========== Cari Item ===========" << endl;
+                    cout << "1. Cari berdasarkan ID" << endl;
+                    cout << "2. Cari berdasarkan Nama" << endl;
+                    cout << "3. Kembali ke menu utama" << endl;
+                    cout << "Select an option (1-3): ";
+                    cin >> input;
+                    if (input == 1){
+                        cout << "Masukkan ID yang ingin dicari: ";
+                        cin >> id;
+                        adrNode result = id(root, id);
+                        if (result != nullptr){
+                            cout << "==================================" << endl;
+                            cout << "Item ditemukan: " << endl;
+                            cout << "ID: " << result->info.id
+                                 << " | Item: " << result->info.nama
+                                 << " | Lokasi: " << result->info.lokasi
+                                 << endl;
+                            cout << "==================================" << endl;
+                        } else {
+                            cout << "Item dengan ID " << id << " tidak ditemukan." << endl;
+                        }
+                    }
+                    else if (input == 2){
+                        cout << "Masukkan Nama yang ingin dicari: ";
+                        cin >> nama;
+                        adrNode result = searchByName(root, nama);
+                        if (result != nullptr){
+                            cout << "==================================" << endl;
+                            cout << "Item ditemukan: " << endl;
+                            cout << "ID: " << result->info.id
+                                 << " | Item: " << result->info.nama
+                                 << " | Lokasi: " << result->info.lokasi
+                                 << endl;
+                            cout << "==================================" << endl;
+                        } else {
+                            cout << "Item dengan Nama " << nama << " tidak ditemukan." << endl;
+                        }
+                    }
+                }
                 break;
-            case 4:
-                // Code to search item by Name
-                break;
-            case 5:
+             case 4:
                 // Code to update item
+                break;
+             case 5:
+                // Code to delete item
                 break;
             case 6:
                 // Code to view items by category
