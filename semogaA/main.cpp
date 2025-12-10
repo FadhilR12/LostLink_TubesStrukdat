@@ -54,7 +54,9 @@ void menuCariItem(){
 int main()
 {
     int input = 0;
-    
+    int pil = 0;
+    int sub = 0;
+
     createTree(root);
 
     while (input != 7){
@@ -68,23 +70,26 @@ int main()
                 cout << endl;
                 break;
             case 2:
-                while (input != 1){
+                sub = 0;
+                while (sub != 1){
+                sub = 0;
                 cout << "=========== Semua Item ===========" << endl;
                 inorder(root);
                 cout << "==================================" << endl;
                 cout << "1. Kembali ke menu utama" << endl;
-                cin >> input;
+                cin >> sub;
                 }
                 break;
             case 3:
-                while (input != 3){
+                pil = 0;
+                while (pil != 3){
                     cout << "=========== Cari Item ===========" << endl;
                     cout << "1. Cari berdasarkan ID" << endl;
                     cout << "2. Cari berdasarkan Nama" << endl;
                     cout << "3. Kembali ke menu utama" << endl;
                     cout << "Select an option (1-3): ";
-                    cin >> input;
-                    if (input == 1){
+                    cin >> pil;
+                    if (pil == 1){
                         cout << "Masukkan ID item yang ingin dicari: ";
                         cin >> id;
                         adrNode result = searchID(root, id);
@@ -100,7 +105,7 @@ int main()
                             cout << "Item dengan ID " << id << " tidak ditemukan." << endl;
                         }
                     }
-                    else if (input == 2){
+                    else if (pil == 2){
                         cout << "Masukkan nama item yang ingin dicari: ";
                         cin >> nama;
                         adrNode result = searchByName(root, nama);
