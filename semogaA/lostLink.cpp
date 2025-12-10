@@ -119,24 +119,26 @@ adrNode searchID(adrNode root, int id)
         return searchID(root->right, id);
     }
 }
-//bfs buat search by name
-adrNode searchByName(adrNode root, string name)
-{
-    if (root == nullptr)
-    {
-        return nullptr;
+
+adrNode searchByName(adrNode root, string name) {
+    if (root == nullptr) return nullptr;
+
+    queue<adrNode> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        adrNode current = q.front();
+        q.pop();
+        if (current->info.nama == name) {
+            return current;
+        }
+        if (current->left != nullptr) q.push(current->left);
+        if (current->right != nullptr) q.push(current->right);
     }
-    if (root->info.nama == name)
-    {
-        return root;
-    }
-    adrNode leftResult = searchByName(root->left, name);
-    if (leftResult != nullptr)
-    {
-        return leftResult;
-    }
-    return searchByName(root->right, name);
+
+    return nullptr;
 }
+
 void updateNode(adrNode &root, int id)
 {
     adrNode target = searchID(root, id);

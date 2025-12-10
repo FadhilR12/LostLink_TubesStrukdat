@@ -87,7 +87,7 @@ int main()
                     if (input == 1){
                         cout << "Masukkan ID item yang ingin dicari: ";
                         cin >> id;
-                        adrNode result = id(root, id);
+                        adrNode result = searchID(root, id);
                         if (result != nullptr){
                             cout << "==================================" << endl;
                             cout << "Item ditemukan: " << endl;
@@ -127,7 +127,7 @@ int main()
                 cout << "Masukkan ID item yang ingin dihapus: ";
                 cin >> id;
                 deleteNode(root, id);
-                cout << "Item dengan ID " << id << " telah dihapus." << endl
+                cout << "Item dengan ID " << id << " telah dihapus." << endl;
                 break;
             case 6:
                 // Code to view items by category
