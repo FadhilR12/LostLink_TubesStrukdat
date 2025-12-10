@@ -8,12 +8,7 @@ void createTree(adrNode &root)
 {
     root = nullptr;
 }
- // 001
-
- // 1 - 100 -> elektronik
-
  // show by category pake inorder dengan header nya terpisah dari loop
-
  // buat 5 inorder untuk setiap kategori
 adrNode createNode(infotype x)
 {
@@ -43,20 +38,7 @@ void insertNode(adrNode &root, adrNode p)
         }
     }
 }
-// preorder, postorde pindahkan file atau hapus 
-void preorder(adrNode root)
-{
-    if (root != nullptr)
-    {
-        cout << "ID: " << root->info.id << "|" 
-            << ", Item: " << root->info.nama << "|" 
-            << ", Kategori: " << root->info.kategori << "|" 
-            << ", Lokasi: " << root->info.lokasi << "|" 
-            << endl;
-        preorder(root->left);
-        preorder(root->right);
-    }
-}
+
 void inorder(adrNode root)
 {
     if (root != nullptr)
@@ -70,19 +52,7 @@ void inorder(adrNode root)
         inorder(root->right);
     }
 }
-void postorder(adrNode root)
-{
-    if (root != nullptr)
-    {
-        postorder(root->left);
-        postorder(root->right);
-        cout << "ID: " << root->info.id << "|" 
-            << ", Item: " << root->info.nama << "|" 
-            << ", Kategori: " << root->info.kategori << "|" 
-            << ", Lokasi: " << root->info.lokasi << "|" 
-            << endl;
-    }
-}
+
 void bfs(adrNode root)
 {
     if (root == nullptr)
