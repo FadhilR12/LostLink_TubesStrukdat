@@ -2,78 +2,19 @@
 #include "lostLink.h"
 using namespace std;
 
-adrNode root = nullptr;
-infotype x;
-string nama, lokasi;
-int id, kategori;
-
-void main_menu(){
-    cout << "=========== LostLink ===========" << endl;
-    cout << "1. Tambahkan Item" << endl;
-    cout << "2. Lihat Semua Item" << endl;
-    cout << "3. Cari Item" << endl;
-    cout << "4. Update Item" << endl;
-    cout << "5. Hapus Item" << endl;
-    cout << "6. Lihat Item Berdasarkan Kategori" << endl;
-    cout << "7. Keluar" << endl;
-    cout << "Select an option (1-7): ";
-}
-
-infotype menuTambahItem(){
-    infotype x;
-    cout << "=========== Tambah Item Baru ===========" << endl;
-    cout << "Masukkan ID Item: ";
-    cin >> x.id;
-    cout << "Masukkan Nama Item: ";
-    cin >> x.nama;
-    cout << "Masukkan Lokasi Item: ";
-    cin >> x.lokasi;
-    if (x.id <= 100) {
-        x.kategori = 1; // Elektronik
-    } else if (x.id <= 200) {
-        x.kategori = 2; // Pakaian
-    } else if (x.id <= 300) {
-        x.kategori = 3; // Makanan
-    } else if (x.id <= 400) {
-        x.kategori = 4; // Buku
-    } else {
-        x.kategori = 5; // Lainnya
-    }
-    cout << "Item berhasil ditambahkan!" << endl;
-    return x;
-}
-
-void menuCariItem(){
-    cout << "=========== Cari Item ===========" << endl;
-    cout << "1. Cari berdasarkan ID" << endl;
-    cout << "2. Cari berdasarkan Nama" << endl;
-    cout << "3. Kembali ke menu utama" << endl;
-    cout << "Select an option (1-3): ";
-}
-
-void menuLihatKategori(){
-    cout << "=========== Lihat Item Berdasarkan Kategori ===========" << endl;
-    cout << "1. Elektronik" << endl;
-    cout << "2. Pakaian" << endl;
-    cout << "3. Makanan" << endl;
-    cout << "4. Buku" << endl;
-    cout << "5. Lainnya" << endl;
-    cout << "6. Kembali ke menu utama" << endl;
-    cout << "Select an option (1-6): ";
-}
-
 int main()
 {
-    int input = 0;
-    int pil = 0;
-    int cat = 0;
-    int sub = 0;
+    adrNode root = nullptr;
+    infotype x;
+    string nama;
+    int id, input, pil, cat, sub;
 
     createTree(root);
 
     while (input != 7){
         main_menu();
         cin >> input;
+        cout << endl;
         switch (input){
             case 1:
                 x = menuTambahItem();
@@ -90,6 +31,7 @@ int main()
                 cout << "==================================" << endl;
                 cout << "1. Kembali ke menu utama" << endl;
                 cin >> sub;
+                cout << endl;
                 }
                 break;
             case 3:
@@ -101,10 +43,12 @@ int main()
                     cout << "3. Kembali ke menu utama" << endl;
                     cout << "Select an option (1-3): ";
                     cin >> pil;
+                    cout << endl;
                     if (pil == 1){
                         cout << "Masukkan ID item yang ingin dicari: ";
                         cin >> id;
                         adrNode result = searchID(root, id);
+                        cout << endl;
                         if (result != nullptr){
                             cout << "==================================" << endl;
                             cout << "Item ditemukan: " << endl;
@@ -121,6 +65,7 @@ int main()
                         cout << "Masukkan nama item yang ingin dicari: ";
                         cin >> nama;
                         adrNode result = searchByName(root, nama);
+                        cout << endl;
                         if (result != nullptr){
                             cout << "==================================" << endl;
                             cout << "Item ditemukan: " << endl;
@@ -133,6 +78,7 @@ int main()
                             cout << "Item dengan nama " << nama << " tidak ditemukan." << endl;
                         }
                     }
+                    cout << endl;
                 }
                 break;
              case 4:
@@ -144,47 +90,50 @@ int main()
                 cout << "Masukkan ID item yang ingin dihapus: ";
                 cin >> id;
                 deleteNode(root, id);
-                cout << "Item dengan ID " << id << " telah dihapus." << endl;
+                cout << "Item dengan ID " << id << " telah dihapus." << endl << endl;;
                 break;
-            case 6;
+            case 6:
+                cat = 0;
                 while (cat != 6){
                     menuLihatKategori();
                     cin >> cat;
+                    cout << endl;
                     switch (cat){
                         case 1:
                             cout << "=========== Kategori Elektronik ===========" << endl;
                             showByCategory(root, 1, 100);
-                            cout << "==================================" << endl;
+                            cout << "===========================================" << endl << endl;
                             break;
                         case 2:
                             cout << "=========== Kategori Pakaian ===========" << endl;
                             showByCategory(root, 101, 200);
-                            cout << "==================================" << endl;
+                            cout << "========================================" << endl << endl;
                             break;
                         case 3:
                             cout << "=========== Kategori Makanan ===========" << endl;
                             showByCategory(root, 201, 300);
-                            cout << "==================================" << endl;
+                            cout << "========================================" << endl << endl;
                             break;
                         case 4:
                             cout << "=========== Kategori Buku ===========" << endl;
                             showByCategory(root, 301, 400);
-                            cout << "==================================" << endl;
+                            cout << "=====================================" << endl << endl;
                             break;
                         case 5:
                             cout << "=========== Kategori Lainnya ===========" << endl;
                             showByCategory(root, 401, 1000);
-                            cout << "==================================" << endl;
+                            cout << "========================================" << endl << endl;
                             break;
                         case 6:
-                            cout << "Kembali ke menu utama..." << endl;
+                            cout << "Kembali ke menu utama..." << endl << endl;
                             break;
                         default:
-                            cout << "Invalid option. Please try again." << endl;
-                    }
+                            cout << "Invalid option. Please try again." << endl << endl;
+                        }
+                }
                 break;
             case 7:
-                cout << "Exiting the program." << endl;
+                cout << "Exiting the program.";
                 break;
             default:
                 cout << "Invalid option. Please try again." << endl;
@@ -192,4 +141,3 @@ int main()
     }
     return 0;
 }
-
