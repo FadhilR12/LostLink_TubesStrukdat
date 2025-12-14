@@ -7,7 +7,7 @@ using namespace std;
 struct item {
     int id;
     string nama;
-    int kategori;
+    string kategori;
     string lokasi;
 };
 
