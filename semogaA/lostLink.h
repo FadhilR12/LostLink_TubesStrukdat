@@ -24,7 +24,6 @@ void createTree (adrNode &root);
 adrNode createNode (infotype x);
 void insertNode (adrNode &root, adrNode p);
 void inorder(adrNode root);
-void bfs(adrNode root);
 void showByCategory(adrNode root, int minID, int maxID);
 adrNode searchID(adrNode root, int id);
 adrNode searchByName(adrNode root, string name);
@@ -36,3 +35,4 @@ infotype menuTambahItem();
 void menuCariItem();
 void main_menu();
 #endif // LOSTLINK_H_INCLUDED
+
