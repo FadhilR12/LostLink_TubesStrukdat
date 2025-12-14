@@ -31,5 +31,8 @@ adrNode searchByName(adrNode root, string name);
 void updateNode(adrNode &root, int id);
 void deleteNode(adrNode &root, int id);
 adrNode minValueNode(adrNode root);
-
+void menuLihatKategori();
+infotype menuTambahItem();
+void menuCariItem();
+void main_menu();
 #endif // LOSTLINK_H_INCLUDED
