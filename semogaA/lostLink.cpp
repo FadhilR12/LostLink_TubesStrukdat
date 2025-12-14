@@ -8,8 +8,7 @@ void createTree(adrNode &root)
 {
     root = nullptr;
 }
- // show by category pake inorder dengan header nya terpisah dari loop
- // buat 5 inorder untuk setiap kategori
+
 adrNode createNode(infotype x)
 {
     adrNode p = new Node;
@@ -149,10 +148,11 @@ void updateNode(adrNode &root, int id)
         cout << "Masukkan lokasi baru: ";
         cin >> target->info.lokasi;
         cout << "Data berhasil diperbarui." << endl;
+        cout << endl;
     }
     else
     {
-        cout << "Item dengan ID " << id << " tidak ditemukan." << endl;
+        cout << "Item dengan ID " << id << " tidak ditemukan." << endl << endl;
     }
 }
 adrNode minValueNode(adrNode root)
@@ -202,3 +202,58 @@ void deleteNode(adrNode &root, int id)
         }
     }
 }
+void main_menu(){
+    cout << "=========== LostLink ===========" << endl;
+    cout << "1. Tambahkan Item" << endl;
+    cout << "2. Lihat Semua Item" << endl;
+    cout << "3. Cari Item" << endl;
+    cout << "4. Update Item" << endl;
+    cout << "5. Hapus Item" << endl;
+    cout << "6. Lihat Item Berdasarkan Kategori" << endl;
+    cout << "7. Keluar" << endl;
+    cout << "Select an option (1-7): ";
+}
+
+infotype menuTambahItem(){
+    infotype x;
+    cout << "=========== Tambah Item Baru ===========" << endl;
+    cout << "Masukkan ID Item: ";
+    cin >> x.id;
+    cout << "Masukkan Nama Item: ";
+    cin >> x.nama;
+    cout << "Masukkan Lokasi Item: ";
+    cin >> x.lokasi;
+    if (x.id <= 100) {
+        x.kategori = 1;
+    } else if (x.id <= 200) {
+        x.kategori = 2;
+    } else if (x.id <= 300) {
+        x.kategori = 3;
+    } else if (x.id <= 400) {
+        x.kategori = 4;
+    } else {
+        x.kategori = 5;
+    }
+    cout << "Item berhasil ditambahkan!" << endl;
+    return x;
+}
+
+void menuCariItem(){
+    cout << "=========== Cari Item ===========" << endl;
+    cout << "1. Cari berdasarkan ID" << endl;
+    cout << "2. Cari berdasarkan Nama" << endl;
+    cout << "3. Kembali ke menu utama" << endl;
+    cout << "Select an option (1-3): ";
+}
+
+void menuLihatKategori(){
+    cout << "=========== Lihat Item Berdasarkan Kategori ===========" << endl;
+    cout << "1. Elektronik" << endl;
+    cout << "2. Pakaian" << endl;
+    cout << "3. Makanan" << endl;
+    cout << "4. Buku" << endl;
+    cout << "5. Lainnya" << endl;
+    cout << "6. Kembali ke menu utama" << endl;
+    cout << "Select an option (1-6): ";
+}
+
