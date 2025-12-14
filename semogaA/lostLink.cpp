@@ -224,15 +224,15 @@ infotype menuTambahItem(){
     cout << "Masukkan Lokasi Item: ";
     cin >> x.lokasi;
     if (x.id <= 100) {
-        x.kategori = 1;
+        x.kategori = "Elektronik";
     } else if (x.id <= 200) {
-        x.kategori = 2;
+        x.kategori = "Pakaian";
     } else if (x.id <= 300) {
-        x.kategori = 3;
+        x.kategori = "Makanan";
     } else if (x.id <= 400) {
-        x.kategori = 4;
+        x.kategori = "Buku";
     } else {
-        x.kategori = 5;
+        x.kategori = "Lainnya";
     }
     cout << "Item berhasil ditambahkan!" << endl;
     return x;
