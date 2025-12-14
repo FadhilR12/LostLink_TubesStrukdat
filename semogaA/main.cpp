@@ -51,10 +51,22 @@ void menuCariItem(){
     cout << "Select an option (1-3): ";
 }
 
+void menuLihatKategori(){
+    cout << "=========== Lihat Item Berdasarkan Kategori ===========" << endl;
+    cout << "1. Elektronik" << endl;
+    cout << "2. Pakaian" << endl;
+    cout << "3. Makanan" << endl;
+    cout << "4. Buku" << endl;
+    cout << "5. Lainnya" << endl;
+    cout << "6. Kembali ke menu utama" << endl;
+    cout << "Select an option (1-6): ";
+}
+
 int main()
 {
     int input = 0;
     int pil = 0;
+    int cat = 0;
     int sub = 0;
 
     createTree(root);
@@ -134,8 +146,42 @@ int main()
                 deleteNode(root, id);
                 cout << "Item dengan ID " << id << " telah dihapus." << endl;
                 break;
-            case 6:
-                // Code to view items by category
+            case 6;
+                while (cat != 6){
+                    menuLihatKategori();
+                    cin >> cat;
+                    switch (cat){
+                        case 1:
+                            cout << "=========== Kategori Elektronik ===========" << endl;
+                            showByCategory(root, 1, 100);
+                            cout << "==================================" << endl;
+                            break;
+                        case 2:
+                            cout << "=========== Kategori Pakaian ===========" << endl;
+                            showByCategory(root, 101, 200);
+                            cout << "==================================" << endl;
+                            break;
+                        case 3:
+                            cout << "=========== Kategori Makanan ===========" << endl;
+                            showByCategory(root, 201, 300);
+                            cout << "==================================" << endl;
+                            break;
+                        case 4:
+                            cout << "=========== Kategori Buku ===========" << endl;
+                            showByCategory(root, 301, 400);
+                            cout << "==================================" << endl;
+                            break;
+                        case 5:
+                            cout << "=========== Kategori Lainnya ===========" << endl;
+                            showByCategory(root, 401, 1000);
+                            cout << "==================================" << endl;
+                            break;
+                        case 6:
+                            cout << "Kembali ke menu utama..." << endl;
+                            break;
+                        default:
+                            cout << "Invalid option. Please try again." << endl;
+                    }
                 break;
             case 7:
                 cout << "Exiting the program." << endl;
@@ -146,3 +192,4 @@ int main()
     }
     return 0;
 }
+
