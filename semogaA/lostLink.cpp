@@ -52,35 +52,6 @@ void inorder(adrNode root)
     }
 }
 
-void bfs(adrNode root)
-{
-    if (root == nullptr)
-        return;
-
-    queue<adrNode> q;
-    q.push(root);
-
-    while (!q.empty())
-    {
-        adrNode current = q.front();
-        q.pop();
-
-        cout << "ID: " << current->info.id << "|"
-            << ", Item: " << current->info.nama << "|"
-            << ", Kategori: " << current->info.kategori << "|"
-            << ", Lokasi: " << current->info.lokasi << "|"
-            << endl;
-
-        if (current->left != nullptr)
-        {
-            q.push(current->left);
-        }
-        if (current->right != nullptr)
-        {
-            q.push(current->right);
-        }
-    }
-}
 void showByCategory(adrNode root, int minID, int maxID)
 {
     if (root == nullptr)
@@ -256,4 +227,5 @@ void menuLihatKategori(){
     cout << "6. Kembali ke menu utama" << endl;
     cout << "Select an option (1-6): ";
 }
+
 
